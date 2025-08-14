@@ -1,5 +1,8 @@
+import src.practical
+
+
 def main():
-    print("Hello from gdp-ml!")
+    pass
 
 
 if __name__ == "__main__":
