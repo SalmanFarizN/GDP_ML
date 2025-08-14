@@ -1,5 +1,6 @@
 from src.tab3_funcs import tab3_show
 from src.tab1_funcs import tab1_show
+from src.tab2_funcs import tab2_show
 import streamlit as st
 import pandas as pd
 
@@ -31,6 +32,9 @@ def main():
 
     with tab1:
         tab1_show(tab1, df)
+
+    with tab2:
+        tab2_show(tab2, df)
 
 
 if __name__ == "__main__":

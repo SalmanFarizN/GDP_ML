@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 
 
 def scatterplot(df):
@@ -57,5 +58,39 @@ def mapplot(df):
         coloraxis_colorbar=dict(
             title="Life Expectancy", thickness=15, len=0.5, bgcolor="#f9f9f9"
         ),
+    )
+    return fig
+
+
+def life_expectancy_vs_year(df):
+
+    # Create a line plot of Life Expectancy over the years for selected countries
+    fig = px.line(
+        df,
+        x="year",
+        y=["Life Expectancy (IHME)"],
+        color="country",
+        title="Life Expectancy over the Years",
+        labels={
+            "Life Expectancy (IHME)": "Life Expectancy (IHME)",
+            "Year": "Year",
+        },
+    )
+    return fig
+
+
+def gdp_vs_year(df):
+
+    # Create a line plot of GDP over the years for selected countries
+    fig = px.line(
+        df,
+        x="year",
+        y=["GDP"],
+        color="country",
+        title="GDP over the Years",
+        labels={
+            "GDP": "GDP",
+            "Year": "Year",
+        },
     )
     return fig
