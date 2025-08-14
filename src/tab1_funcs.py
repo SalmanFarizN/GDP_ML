@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from src.plots import scatterplot
+from src.plots import scatterplot, mapplot
 from src.model import model_predict
 import joblib
 
@@ -9,6 +9,7 @@ def tab1_show(tab1, df):
 
     # Display the dataset in tab1
     with tab1:
+
         # Add a slider to select a single year
         year = st.slider(
             "Select a year:",
@@ -19,6 +20,10 @@ def tab1_show(tab1, df):
 
         # Filter the dataframe based on the selected year
         df_filtered = df[df["year"] == year]
+
+        # Display a mapplot showing the GDP and life-expectancy of that year for each country
+        mapfig = mapplot(df_filtered)
+        st.plotly_chart(mapfig, use_container_width=True)
 
         # Number of unique countries
         num_unique_countries = df_filtered["country"].nunique()
